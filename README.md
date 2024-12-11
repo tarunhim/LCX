@@ -9,4 +9,9 @@ Website Sharing -
 
                 now in the last part of the assignment, it need to be rendered on a web page, hence i have added a flask api as well to list down all data which i am saving in sqlite.
 
-                
+Insta Sharing - 
+                In this automation script the main component was to integrate with insta app to fetch and push data from one insta account to another one
+
+                Here also i am using sqlite for storing data to stop duplicacy, and at the same time shortning, the url and pushing data to insta account
+
+                Post first script, the meagre time i got, i created developer account on meta app, but was not getting option for instagram for some reason that i yet to fine. so the option i left if i want to submit this script as well was to simulate both fetching post functionality and pushing post functionality so that i can show the working script hence i have done so.

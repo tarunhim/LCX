@@ -72,7 +72,7 @@ def monitor_and_automate():
             posts = get_recent_posts()
             for post in posts:
                 if save_if_not_present(post["id"], post["long_url"], post["caption"]):
-                    publish_to_instagram(post["long_url"], post["caption"])
+                    # publish_to_instagram(post["long_url"], post["caption"]) not tested code as i am unable to create an app on meta developer account
                 else:
                     print("Post already exists in database.")
             print("running...", posts)
