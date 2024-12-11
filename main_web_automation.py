@@ -17,7 +17,7 @@ app = Flask(__name__)
 def setup_database():
     conn = sqlite3.connect(DATABASE)
     c = conn.cursor()
-    c.execute('''CREATE TABLE IF NOT EXISTS articles (id INTEGER PRIMARY KEY, url TEXT UNIQUE)''')
+    c.execute('''CREATE TABLE IF NOT EXISTS articles (id INTEGER PRIMARY KEY, url TEXT UNIQUE, caption TEXT, short_url TEXT)''')
     conn.commit()
     conn.close()
 
@@ -35,6 +35,14 @@ def save_article(url):
     c.execute("INSERT INTO articles (url) VALUES (?)", (url,))
     conn.commit()
     conn.close()
+
+def update_data_with_short_url_and_caption(url, short_url, caption):
+    conn = sqlite3.connect(DATABASE)
+    c = conn.cursor()
+    c.execute("UPDATE articles SET short_url = ?, caption = ? WHERE url = ?",(short_url, caption, url))
+    conn.commit()
+    conn.close()
+    
 
 def fetch_latest_articles():
     feed = feedparser.parse(RSS_FEED)
@@ -98,12 +106,12 @@ def automation_process():
             caption = generate_caption(article["title"], article["summary"]) # currently return title itself as need open api key for caption generation for which i didn't got the time to R&D about
             short_url = shorten_url(article["url"])
             # image_url = generate_image(article["title"]) As i don't have dall e api key currently
-            with open("static/uploads.txt", "a") as file:
-                file.write(f"{caption} - {short_url}\n")
+            # with open("static/uploads.txt", "a") as file:
+            #     file.write(f"{caption} - {short_url}\n")
+            update_data_with_short_url_and_caption(article["url"], short_url, caption)
         print("Automation complete.")
-        # print(len(fetch_data()))
+        # print(len(fetch_data()), fetch_data()[0])
         time.sleep(10)
-
 
 if __name__ == "__main__":
     automation_process()
