@@ -39,9 +39,9 @@ def save_article(url):
 def fetch_latest_articles():
     feed = feedparser.parse(RSS_FEED)
     articles = []
-    print("feed", feed.entries[0])
+    # print("feed", feed.entries[0])
     for entry in feed.entries:
-        print("entry", entry.title)
+        # print("entry", entry.title)
         if is_new_article(entry.link):
             articles.append({
                 "title": entry.title,
@@ -101,7 +101,7 @@ def automation_process():
             with open("static/uploads.txt", "a") as file:
                 file.write(f"{caption} - {short_url}\n")
         print("Automation complete.")
-        print(len(fetch_data()))
+        # print(len(fetch_data()))
         time.sleep(10)
 
 
