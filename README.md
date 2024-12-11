@@ -1,4 +1,6 @@
 Website Sharing - 
+                
+                
                 This automation script interacts with various external sources, including CNN's RSS feed, a caption generation API, and an image/video generation API. It also utilizes SQLite, a popular database, to persist the processed data.
 
                 The script begins by setting up the SQLite database for storing article details, captions, media links, and URLs. It then fetches new articles from CNN's RSS feed, checks if they have been processed previously based on their unique URLs, and proceeds to process only the new ones.
@@ -10,6 +12,8 @@ Website Sharing -
                 now in the last part of the assignment, it need to be rendered on a web page, hence i have added a flask api as well to list down all data which i am saving in sqlite.
 
 Insta Sharing - 
+                
+                
                 In this automation script the main component was to integrate with insta app to fetch and push data from one insta account to another one
 
                 Here also i am using sqlite for storing data to stop duplicacy, and at the same time shortning, the url and pushing data to insta account
